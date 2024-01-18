@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geminiapp/geminiInstance.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ChatBubble extends StatefulWidget {
   const ChatBubble({super.key, required this.input});
@@ -48,7 +49,16 @@ class _ChatBubbleState extends State<ChatBubble> {
               } else if (snapshot.connectionState == ConnectionState.done) {
                 final String response = snapshot.data!.text;
                 print(response);
-                return Text(response);
+                return Container(
+                    padding: const EdgeInsets.all(10),
+                    margin: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.primaryContainer,
+                        borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(20),
+                            topRight: Radius.circular(20),
+                            bottomRight: Radius.circular(20))),
+                    child: Text(response, style: GoogleFonts.lato()));
               }
               if (snapshot.connectionState == ConnectionState.none) {
                 return const Center(child: Text('Search something!'));

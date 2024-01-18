@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geminiapp/bubble.dart';
-import 'package:geminiapp/geminiInstance.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -19,19 +19,6 @@ class _HomepageState extends State<Homepage> {
     _controller = TextEditingController();
   }
 
-// String response ='';
-// //   // function that interacts with the gemini API
-//   getResponseFromGemini(String input){
-//     final gemini = newGemini().gemini;
-//     gemini.generateFromText(input).then((value) {
-//       print(value.text);
-//       response = value.text;
-//       _controller.clear();
-//     }).catchError((error){
-//       print(error);
-//     });
-//     return response;
-//   }
   String input = '';
 
   @override
@@ -48,6 +35,7 @@ class _HomepageState extends State<Homepage> {
           Expanded(
               child: SingleChildScrollView(
             child: Column(
+               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ChatBubble(input: input),
               ],
@@ -59,7 +47,8 @@ class _HomepageState extends State<Homepage> {
               controller: _controller,
               decoration: InputDecoration(
                   hintText: 'Ask Gemini anything?',
-                  border: OutlineInputBorder(),
+                  hintStyle: GoogleFonts.lato(),
+                  border: const OutlineInputBorder(),
                   suffixIcon: GestureDetector(
                       onTap: () {
                         setState(() {
@@ -67,7 +56,7 @@ class _HomepageState extends State<Homepage> {
                         });
                         _controller.clear();
                       },
-                      child: Icon(
+                      child: const Icon(
                         Icons.send_rounded,
                       ))),
             ),
